@@ -10,12 +10,13 @@ export class AppComponent {
 
   title = 'exemplo-mapa-angular';
 
-  chave: string = 'minha chave de API Maps';
+  chave: string = 'minha chave';
 
-  latitude: number = -16.728335131289096;
-  longitude: number = -49.30219346611459;
+  latitude: number = -16.7590297;
+  longitude: number = -49.2552972;
   endereco: string = '';
   coordenadaObtida: string = '';
+  linkEndereco: string = '';
 
 
   mostrarLocalizacaoNoMapa() {
@@ -23,7 +24,7 @@ export class AppComponent {
       this.latitude == undefined || this.longitude == undefined) {
       alert("Informe a latitude e longitude!")
     } else {
-      const mapElement = document.getElementById("mostra-localizacao");//referencia ao ID da div que mostrará
+      const mapElement = document.getElementById("mapa-tela");//referencia ao ID da div que mostrará
       if (mapElement) {//Verifica se existe a DIV com id map no HTML
         let loader = new Loader({
           apiKey: this.chave
@@ -43,6 +44,8 @@ export class AppComponent {
             title: "Minha Localização",
           });
 
+          this.linkEndereco = `https://www.google.com/maps?q=${this.latitude},${this.longitude}`;
+
         });
       }
     }
@@ -54,7 +57,7 @@ export class AppComponent {
       this.endereco == undefined) {
       alert("Informe o endereço: (Nome rua, Nº rua, Bairro, Cidade) ")
     } else {
-      const mapElement = document.getElementById("obter-coordenadas");
+      const mapElement = document.getElementById("mapa-tela");
       if (mapElement) {
         let loader = new Loader({
           apiKey: this.chave
@@ -75,14 +78,21 @@ export class AppComponent {
                   map: localizacaoMapa,
                   title: "Localização Obtida",
                 });
+                const localizacaoFormatada = this.coordenadaObtida.replace(/\)/g, '').replace(/\(/g, '');
+                this.linkEndereco = `https://www.google.com/maps?q=` + localizacaoFormatada;                
               }
             } else {
               console.error("Geocodificação falhou devido a: " + status);
+              alert("Geocodificação falhou devido a: " + status)
             }
           });
         });
       }
     }
+  }
+
+  marcarVariasCoordenadasMapa() {
+
   }
 
 

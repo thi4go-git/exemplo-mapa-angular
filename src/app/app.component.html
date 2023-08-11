@@ -1,18 +1,7 @@
-<div>
-    <h2>Mostrar Localizacao através da Latitude e Longitude</h2>
-    <input type="number" placeholder="latitude" name="latitude" [(ngModel)]="latitude">
-    <input type="number" placeholder="longitude" name="longitude" [(ngModel)]="longitude">
-    <button type="button" class="btn" (click)="mostrarLocalizacaoNoMapa()">
-        Exibir
-    </button>
-    <!-- MAPA será renderizado aqui -->
-    <div class="mapa" id="mostra-localizacao">
-    </div>
-</div>
-<hr />
-<div>
+<h1>Consultar</h1>
+<div class="inline">
     <h2>Obter Coordenadas do endereço</h2>
-    Informe o endereço: (Nome rua, Nº rua, Bairro, Cidade)
+    Informe o endereço: (Nome rua, Nº rua, Bairro, Cidade ou CEP)
     <br>
     <input type="text" placeholder="endereco" name="endereco" [(ngModel)]="endereco">
     <button type="button" class="btn" (click)="obterCoordenadasDoEndereco()">
@@ -21,7 +10,24 @@
     <div *ngIf="coordenadaObtida">
         Coordenada Obtida: {{ coordenadaObtida }}
     </div>
-    <!-- MAPA será renderizado aqui -->
-    <div class="mapa" id="obter-coordenadas">
-    </div>
+</div>
+<div class="inline">
+    <h2>Mostrar Localizacao através da Latitude e Longitude</h2>
+    <input type="number" placeholder="latitude" name="latitude" [(ngModel)]="latitude">
+    <input type="number" placeholder="longitude" name="longitude" [(ngModel)]="longitude">
+    <button type="button" class="btn" (click)="mostrarLocalizacaoNoMapa()">
+        Exibir
+    </button>
+</div>
+<div *ngIf="linkEndereco">
+    <a href="{{ linkEndereco }}" target="_blank">{{ linkEndereco }}</a>
+</div>
+<div class="mapa" id="mapa-tela">
+</div>
+<hr>
+<h1>Mapa com várias coordenadas</h1>
+<button type="button" class="btn" (click)="marcarVariasCoordenadasMapa()">
+    MArcar
+</button>
+<div class="mapa" id="varias-coordenadas">
 </div>
