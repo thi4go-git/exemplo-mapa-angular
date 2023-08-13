@@ -1,5 +1,14 @@
 # ExemploMapaAngular
 
+Usamos 2 Bibliotecas para o Google MAPSnesse projeto:
+@types/google.maps e @googlemaps/js-api-loader
+
+Instalar:
+npm i -D @types/google.maps
+npm i @googlemaps/js-api-loader
+
+Devemos criar um TOKEN para acesso a API Java Script do MAPS no Google Cloud
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
 ## Development server
